@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimizador de cortes</title>
+    <link rel="stylesheet" href="/resources/styles/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font-family: 'Roboto', sans-serif; -->
+  </head>
+
+  <body>
+    <main>
+      <section class="main-login">
+        <section class="main-login__container">
+          <h2>Optimizador de cortes</h2>
+          <h2>Inicia sesión</h2>
+          <form action="auth" method="post" class="main-login__container--form">
+            <input
+              id="cedula"
+              type="text"
+              name="cedula"
+              placeholder="Cédula"
+              class="input"
+              autocomplete="off"
+            />
+
+            <input
+              id="passw"
+              type="password"
+              name="contrasena"
+              placeholder="Contraseña"
+              class="input"
+              autocomplete="off"
+            />
+            <button
+              type="submit"
+              class="button"
+              id="boton_iniciar_sesion"
+              value="Iniciar sesión"
+            >
+              Iniciar sesion
+            </button>
+            <!-- <div class="login__container--remember-me">
+              <label class="checkbox" for="">
+                <input
+                  type="checkbox"
+                  name=""
+                  id="cbox1"
+                  value="checkbox"
+                />Recuérdame
+              </label>
+              <a href="/">Olvidé mi contraseña</a>
+            </div> -->
+          </form>
+          <p class="login__container--register">
+            No tienes ninguna cuenta <a href="/registro">Resgístrate</a>
+          </p>
+        </section>
+      </section>
+    </main>
+    <!-- <script src="../../utils/login.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <% if (typeof alert != "undefined") {%>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: '<%= showConfirmButton %>',
+        timer: '<%= timer %>',
+      }).then(() => {
+        window.location = ' <%= ruta %>'
+      })
+    </script>
+ <% } %>
+  </body>
+</html>

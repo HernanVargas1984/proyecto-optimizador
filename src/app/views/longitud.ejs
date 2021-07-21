@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Longitud</title>
+  <link rel="stylesheet" href="/resources/styles/longitud.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <!-- font-family: 'Roboto', sans-serif; -->
+</head>
+
+<body>
+  
+  <header>
+    <% if (login) { %> 
+      <h2><strong><%= name %> </strong></h2>
+      <a href="logout">Logout</a>
+    <% }else { %>
+      <h2><strong><%= name %> </strong></h2>
+      <a href="/login">ir a login</a>
+    <% } %> 
+  </header>
+  <main>
+    <h1>Optimizador de corte por longitud </h1>
+    <form  name="registroCortes" action="add" method="POST">
+    <section class="length-cuts">
+      <div class="length-cuts-container container">
+        <label for="unidadesMedida" class="label">
+          <span>Unidades de medida</span>
+          <select name="unidadesMedida" id="unidadesMedida" class="input-material">
+            <option value="" selected>Seleccionar...</option>
+            <option value="m">metros</option>
+            <option value="cm">centimetros</option>
+            <option value="mm">milimetros</option>
+          </select>
+        </label>
+        <label for="descripcionMaterial" class="label">
+          <span>Descripción del Material</span>
+          <input type="text" id="descripcionMaterial" class="input-material" />
+        </label>
+        <label for="longitudMaterial" class="label">
+          <span>la longitud del material a utilizar</span>
+          <input type="number" id="longitudMaterial" class="input-material" name="longitud del material"/>
+        </label>
+      </div>
+    </section>
+    <!-- Despunte -->
+    <section class="despunte">
+      <h2>Despunte del material</h2>
+      <div class="despunte-container container">
+        <label for="despunteIzq" class="label">
+          <span>Despunte Izquierda</span>
+          <input type="number" id="despunteIzq" class="input-material" name="despunte"/>
+        </label>
+        <label for="despunteDer" class="label">
+          <span>Despunte Derecha</span>
+          <input type="number" id="despunteDer" class="input-material" name="despunte"/>
+        </label>
+        <label for="grosorHta" class="label">
+          <span>Grosor de la Herramienta de corte</span>
+          <input type="number" id="grosorHta" class="input-material" name="grosor de herramienta" />
+        </label>
+      </div>
+    </section>
+    <!-- Especificaciones de corte -->
+    <section class="specification-cut">
+      <h2>Especificaciones de corte</h2>
+      <div class="specification-cut-container container">
+        <label for="refCorte" class="label">
+          <span>Referencia</span>
+          <input type="text" class="longInputs" id="refCorte" placeholder="Referencia" autocomplete="off" />
+        </label>
+        <label for="longCorte" class="label">
+          <span>Longitud</span>
+          <input type="number" class="longInputs" id="longCorte" placeholder="Longitud" name="longitud de corte"/>
+        </label>
+        <label for="cantCorte" class="label">
+          <span>Cantidad</span>
+          <input type="number" class="longInputs" id="cantCorte" placeholder="Cantidad" />
+        </label>
+      </div>
+      <div class="button-add-container container">
+        <button class="btn btn-outline-primary" type="submit" value="Agregar">Agregar</button>
+      </div>
+    </form>
+      <div>
+        <table id="listaCorte">
+          <tr>
+              <th>Id</th>
+              <th>Referencia</th>
+              <th>Longitud</th>
+              <th>Cantidad</th>
+          </tr>
+        </table>
+      </div>
+      <div class="button-add-container container">
+        <input class="btn btn-outline-primary" type="button" value="Calcular">
+      </div>
+    </section>
+    <section>
+      <div id="resumenCorte">
+        <div>
+          <h2>Listado de cortes</h2>
+        </div>
+        <div id="tablaCortes">
+          <table id="tablaResumen" hidden>
+              <tr>
+                <th>Corte #</th>
+                <th>Referencia</th>
+                <th>Longitud</th>
+                <th>Cantidad</th>
+                <th>Desperdicio</th>
+              </tr>
+          </table>
+        </div>
+      </div>
+      <!-- Vertically centered static modal -->
+      <div class="modal fade" id="modalAlert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel1">Mensaje</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h2 id="mensajeModal" style="color: black;"></h2>
+                </div>
+            <div class="modal-footer">
+              <button type="button"
+                data-dismiss="modal" 
+                style="background-color: #4A5050; width: 100px; height: 40px; color: white; font-size: 15px; border-radius: 18px;">
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="../../utils/longitud.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/resources/styles/registro.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <!-- font-family: 'Roboto', sans-serif; -->
+	<title>Registro</title>
+</head>
+<body>
+	<main>
+		<h1>Registro</h1>
+		<form name="registroInsti" action="registro" method="post">
+			<label for="nombre">  <!-- EL FOR DEL LABEL Y EL NAME DE LOS INPUTS DEBEN SER LOS MISMOS -->
+				<input id="name_user" type="text" name="nombre" autofocus="autofocus" placeholder="Nombre" class="input">
+			</label>
+			<label for="email">
+				<input id="e_mail" type="email" name="email" placeholder="Correo Electronico" class="input" autocomplete="off">
+			</label>
+			<label for="cedula">
+				<input id="cedula" type="text" name="cedula" placeholder="Cedula" class="input" autocomplete="off">
+			</label>
+			<label for="contrasena">
+				<input id="passw" type="password" name="contrasena" placeholder="Contraseña" class="input" autocomplete="off">
+			</label>
+			<!-- <label for="passwordTry">
+				<input id="r_pessw" type="password" name="passwordTry" placeholder="Repite contraseña" class="input" autocomplete="off">
+			</label> -->
+			<label for="Perfil">
+				<input list="perfil" type="text" name="Perfil" placeholder="Perfil" class="input" autocomplete="off">
+				<datalist id="perfil" class="input">
+					<option>Empleado</option>
+					<option>Administrador</option>
+				</select>
+			</label>
+			<button id="btn-agregar" type="submit">Registrarme</button>
+
+		</form>
+
+	</main>
+	<script src="../../utils/registro.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <% if (typeof alert != "undefined") {%>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: '<%= showConfirmButton %>',
+        timer: '<%= timer %>',
+      }).then(() => {
+        window.location = ' <%= ruta %>'
+      })
+    </script>
+ <% } %>
+</body>
+</html>

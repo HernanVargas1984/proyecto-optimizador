@@ -1,0 +1,36 @@
+{
+  "name": "optimizador-de-cortes",
+  "version": "1.0.0",
+  "description": "El optimizador de cortes",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauricioEMC2/Optimizador-Nuevo.git"
+  },
+  "keywords": [
+    "\"javascript\"",
+    "\"git\"",
+    "\"html\"",
+    "\"css\"",
+    "\"database\"",
+    "\"nodejs\""
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MauricioEMC2/Optimizador-Nuevo/issues"
+  },
+  "homepage": "https://github.com/MauricioEMC2/Optimizador-Nuevo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1"
+  }
+}
